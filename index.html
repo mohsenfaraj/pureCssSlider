@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+    body {
+        direction: rtl;
+        text-align: center;
+        font-family: 'Vazir';
+    }
+
+    .slidercreator *{
+        margin: 5px;
+    }
+    .slidercreator input {
+        direction: ltr;
+        font-family: 'Vazir';
+    }
+
+    .addpic {
+        background-color: #ccc ;
+        width:350px;
+        display: block;
+        margin: 5px auto;
+        padding: 10px;
+    }
+    .addpic2 {
+        background-color: #ccc ;
+        width:350px;
+        display: block;
+        margin: 5px auto;
+        padding: 10px;
+    }
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pure css Slider creator</title>
+</head>
+<body>
+<noscript><span style="background:red;color:white;padding:5px 10px;">امکان جاوا اسکریپت بر روی مرورگر شما فعال نمی باشد!</span></noscript>
+    <h1>ابزار ساخت اسلایدر CSS</h1>
+    <p><strong>بدون نیاز به امکان جاوا اسکریپت!</strong></p>
+    <p>اطلاعات لازم برای ساخت را وارد کنید</p>
+    <div class="slidercreator">
+        <label>آیدی اسلایدر به لاتین</label>
+        <input type="text" id="sliderid" />
+        <br>
+        <label>مدت زمان وقفه اسلاید بر حسب ثانیه</label>
+        <input type="text" id="breaktime" />
+        <br>
+        <label>مدت زمان تغییر هر اسلایدر</label>
+        <input type="text" id="changetime" />
+        <br>
+        <label>طول اسلایدر بر حسب پیکسل</label>
+        <input type="text" id="sliderwidth" />
+        <br>
+        <label>ارتفاع اسلایدر بر حسب پیکسل</label>
+        <input type="text" id="sliderheight" />
+        <br>
+        <label>گردی گوشه اسلایدر بر حسب پیکسل</label>
+        <input type="text" id="sliderradius" />
+        <br>
+        <div class="addpic">
+            <label>عنوان عکس</label>
+            <br>
+            <input type="text" id="imagetitle" />
+            <br>
+            <label>آدرس عکس</label>
+            <br>
+            <input type="text" id="imagelink">
+            <br>
+            <label>لینک به آدرس</label>
+            <br>
+            <input type="text" id="linkto">
+            <br>
+            <input type="button" id="createslide" value="افزودن عکس" onclick="addpicture()">
+        </div>
+        <label style="color:#dc143c">عکس های اضافه شده</label>
+        <div id="addedpics">
+        </div>
+        <br>
+        <input type="button" value="ساخت کد" id="createbtn" onclick="createcode()" />
+        <br>
+        <textarea onmouseover="this.select();" readonly="true" id="outputtxt" cols="40" rows="20" style="direction:ltr;"></textarea>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
