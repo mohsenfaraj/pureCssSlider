@@ -1,17 +1,10 @@
 function addpicture() {
-    var imagetitle = gix("imagetitle");
     var imagelink = gix("imagelink");
     var linkto = gix("linkto");
-    clearidvalue("imagetitle");
     clearidvalue("imagelink");
     clearidvalue("linkto");
     var maindiv = document.createElement('div');
     maindiv.className="addpic2";
-
-    var titleinput = document.createElement('input');
-    titleinput.type="text";
-    titleinput.className="titleinput" ;
-    titleinput.value= imagetitle ;
 
     var linkinput = document.createElement('input');
     linkinput.type="text";
@@ -31,8 +24,6 @@ function addpicture() {
         this.parentNode.parentNode.removeChild(this.parentNode);
     };
     
-    var titleofpictxt = document.createElement('label');
-    titleofpictxt.innerText = "عنوان عکس" ;
 
     var linkofpictxt = document.createElement('label');
     linkofpictxt.innerText="آدرس عکس" ;
@@ -40,11 +31,8 @@ function addpicture() {
     var linktotxt = document.createElement('label');
     linktotxt.innerText = "لینک به آدرس"
 
-
     var newlinetxt = document.createElement('br');
-    maindiv.appendChild(titleofpictxt);
-    maindiv.appendChild(titleinput);
-    maindiv.appendChild(newlinetxt.cloneNode(true));
+	
     maindiv.appendChild(linkofpictxt);
     maindiv.appendChild(linkinput);
     maindiv.appendChild(newlinetxt.cloneNode(true));
