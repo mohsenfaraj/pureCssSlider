@@ -94,25 +94,25 @@ function createcode() {
     var counter = 0 ;
     while (counter <= piccount*2) {
         if (counter == 0){
-            animationcode = animationcode + '0% {right:-' + (piccount*sliderwidth-sliderwidth) + ';}';
+            animationcode = animationcode + '0% {right:-' + (piccount*sliderwidth-sliderwidth) + 'px;}';
             counter ++ ;
         } else ;
         if (counter % 2 == 0) {
             livepercentage += chnagetimedeg;
             livepercentage = parseFloat(livepercentage.toFixed(2));
             animationcode = animationcode + livepercentage + '%{right:-' + ((piccount*sliderwidth)
-            - (Math.floor(counter/2)*sliderwidth)-sliderwidth) + ';}' ;
+            - (Math.floor(counter/2)*sliderwidth)-sliderwidth) + 'px;}' ;
             counter ++ ;
         } 
         else if (counter % 2 == 1){
             livepercentage += breaktimedeg;
             livepercentage = parseFloat(livepercentage.toFixed(2));
             animationcode = animationcode + (livepercentage + '%{right:-' + ((piccount*sliderwidth)
-            - (Math.floor(counter/2)*sliderwidth)-sliderwidth) + ';}');
+            - (Math.floor(counter/2)*sliderwidth)-sliderwidth) + 'px;}');
             counter ++ ;
         }
         if (counter == piccount*2){
-            animationcode = animationcode + '100%{right:-' + (piccount*sliderwidth-sliderwidth) + ';}';
+            animationcode = animationcode + '100%{right:-' + (piccount*sliderwidth-sliderwidth) + 'px;}';
             animationcode = animationcode + '}' ;
             counter ++ ;
         } else;
@@ -124,7 +124,7 @@ function createcode() {
     var basehtmlcode = '<div id=\"' + sliderid +'\">\n<div class=\"'+sliderid+'class\">';
     for (var counter = 0; counter < piccount ; counter++) {
         basehtmlcode += '\n<a href=\"' + hrefclass[counter].value + '\" target=\"_Blank\">' ;
-        basehtmlcode += '\n<span style=\"background-image:url(' + imageclass[counter].value + ');\"></span>';
+        basehtmlcode += '\n<span style=\"background-image:url(' + imageclass[counter].value + ');\">&nbsp;</span>';
         basehtmlcode += '\n</a>'
     }
     basehtmlcode += '\n</div></div>';
