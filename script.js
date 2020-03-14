@@ -118,7 +118,6 @@ function createcode() {
         } else;
     };
     basecsscode += animationcode ;
-    //console.log(basecsscode);
 
     //generate html code:
     var basehtmlcode = '<div id=\"' + sliderid +'\">\n<div class=\"'+sliderid+'class\">';
@@ -128,9 +127,11 @@ function createcode() {
         basehtmlcode += '\n</a>'
     }
     basehtmlcode += '\n</div></div>';
-    var finalcode = '<!-- slider tool by Chortak.Blog.ir -->\n'
+	var startcredit = '<!-- slider tool by Chortak.Blog.ir -->\n' ;
+	var endcredit = '\n<!--end of slider tool by Chortak.Blog.ir -->' ;
+    var finalcode = startcredit 
     +'<style>' + basecsscode + '</style>\n' + basehtmlcode 
-     + '\n<!--end of slider tool by Chortak.Blog.ir -->';
+    + endcredit ;
     document.getElementById("outputtxt").value = finalcode ;
     basehtmlcode = '' ;
     basecsscode = '';
