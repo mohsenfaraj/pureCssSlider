@@ -73,11 +73,15 @@ function createcode() {
 
     var totaltime = piccount*(parseFloat(breaktime)+parseFloat(changetime)) ; //calculates the whole slider time
     totaltime = parseFloat(totaltime.toFixed(2));
-    var basecsscode = "#$id{height:&heightpx;width:&widthpx;overflow:hidden;position:relative;border-radius:&radiuspx;}.$idclass{width:&fullwidthpx;position:absolute;display:block;animation:$idanimation &fulltimes infinite;animation-play-state: running;}.$idclass:hover {animation-play-state: paused;filter:grayscale(.5);}.$idclass a span{height:&heightpx;width:&widthpx;margin:0;padding:0;text-align:center;float:left;background-size:cover;background-repeat:no-repeat;background-position:center;}";
+    var ratio = sliderheight / sliderwidth / piccount  * 100 ;
+    ratio = ratio.toFixed(2) + "%" ;
+    var basecsscode = '#$id {width:100%; max-width: &widthpx; overflow: hidden; border-radius: &radiuspx; } .$idclass { width: &classwidth ; position: relative; display: block; animation: $idanimation &fulltimes infinite; animation-play-state: running; } .$idclass:hover { animation-play-state: paused; filter: grayscale(0.5); } .$idclass a span { width:&spanwidth; max-width: &widthpx; padding-top: &ratio; margin: 0; float: left; background-size: cover; background-repeat: no-repeat; background-position: center;}';
     //this codes below replaces entered values in basecode.
     basecsscode = basecsscode.replace(/\$id/g,sliderid);
-    basecsscode = basecsscode.replace(/\&height/g,sliderheight);
+    basecsscode = basecsscode.replace(/\&ratio/g,ratio);
     basecsscode = basecsscode.replace(/\&width/g,sliderwidth);
+    basecsscode = basecsscode.replace(/\&classwidth/g, 100 * piccount + "%");
+    basecsscode = basecsscode.replace(/\&spanwidth/g, Math.floor(100/piccount * 100) / 100 + "%");
     basecsscode = basecsscode.replace(/\&radius/g,sliderradius);
     basecsscode = basecsscode.replace(/\&fullwidth/g,piccount*sliderwidth);
     basecsscode = basecsscode.replace(/\&fulltime/g,totaltime); 
@@ -92,27 +96,27 @@ function createcode() {
     // first initiation of code.
     var animationcode = '@keyframes ' + sliderid + 'animation {';
     var counter = 0 ;
+    var onpic = 0 ;
     while (counter <= piccount*2) {
         if (counter == 0){
-            animationcode = animationcode + '0% {right:-' + (piccount*sliderwidth-sliderwidth) + 'px;}';
+            animationcode = animationcode + '0% {right:0px;}';
             counter ++ ;
         } else ;
         if (counter % 2 == 0) {
             livepercentage += chnagetimedeg;
             livepercentage = parseFloat(livepercentage.toFixed(2));
-            animationcode = animationcode + livepercentage + '%{right:-' + ((piccount*sliderwidth)
-            - (Math.floor(counter/2)*sliderwidth)-sliderwidth) + 'px;}' ;
+            animationcode = animationcode + livepercentage + '%{right:' + (onpic*100) +'%;}' ;
             counter ++ ;
         } 
         else if (counter % 2 == 1){
             livepercentage += breaktimedeg;
             livepercentage = parseFloat(livepercentage.toFixed(2));
-            animationcode = animationcode + (livepercentage + '%{right:-' + ((piccount*sliderwidth)
-            - (Math.floor(counter/2)*sliderwidth)-sliderwidth) + 'px;}');
+            animationcode = animationcode + (livepercentage + '%{right:' + (onpic * 100)  + '%;}');
             counter ++ ;
+            onpic ++ ;
         }
         if (counter == piccount*2){
-            animationcode = animationcode + '100%{right:-' + (piccount*sliderwidth-sliderwidth) + 'px;}';
+            animationcode = animationcode + '100%{right:0%;}';
             animationcode = animationcode + '}' ;
             counter ++ ;
         } else;
