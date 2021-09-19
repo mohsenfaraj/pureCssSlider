@@ -75,7 +75,7 @@ function createcode() {
     totaltime = parseFloat(totaltime.toFixed(2));
     var ratio = sliderheight / sliderwidth / piccount  * 100 ;
     ratio = ratio.toFixed(2) + "%" ;
-    var basecsscode = '#$id {width:100%; max-width: &widthpx; overflow: hidden; border-radius: &radiuspx; } .$idclass { width: &classwidth ; position: relative; display: block; animation: $idanimation &fulltimes infinite; animation-play-state: running; } .$idclass:hover { animation-play-state: paused; filter: grayscale(0.5); } .$idclass a span { width:&spanwidth; max-width: &widthpx; padding-top: &ratio; margin: 0; float: left; background-size: cover; background-repeat: no-repeat; background-position: center;}';
+    var basecsscode = '#$id {width:100%; max-width: &widthpx; height:auto; margin:0 auto ; overflow: hidden; border-radius: &radiuspx; } .$idclass { width: &classwidth ; position: relative; display: block; animation: $idanimation &fulltimes infinite; animation-play-state: running; } .$idclass:hover { animation-play-state: paused; filter: grayscale(0.5); } .$idclass a span { width:&spanwidth; max-width: &widthpx; height: 0 ; padding-top: &ratio; margin: 0; float: left; background-size: cover; background-repeat: no-repeat; background-position: center;}';
     //this codes below replaces entered values in basecode.
     basecsscode = basecsscode.replace(/\$id/g,sliderid);
     basecsscode = basecsscode.replace(/\&ratio/g,ratio);
@@ -124,7 +124,7 @@ function createcode() {
     basecsscode += animationcode ;
 
     //generate html code:
-    var basehtmlcode = '<div id=\"' + sliderid +'\">\n<div class=\"'+sliderid+'class\">';
+    var basehtmlcode = '<div dir=\"ltr\" id=\"' + sliderid +'\">\n<div class=\"'+sliderid+'class\">';
     for (var counter = 0; counter < piccount ; counter++) {
         basehtmlcode += '\n<a href=\"' + hrefclass[counter].value + '\" target=\"_Blank\">' ;
         basehtmlcode += '\n<span style=\"background-image:url(' + imageclass[counter].value + ');\">&nbsp;</span>';
